@@ -10,7 +10,7 @@ For example, log base(2) 8 = 3 because 2^3 = 8, so the running time of the opera
  
 IO stream is use to read or write stream of bytes while Reader is to read chars, strings and sometimes int.
  
-I think the IO Stream/Reader classes extensively use the Decorator pattern to add functionalities to new implementations without affecting the original. This is accomplished by creating an object wrapper referred to as a Decorator around the actual object.
+I think the IO Stream classes extensively use the Decorator pattern to add functionalities to new implementations without affecting the original. This is accomplished by creating an object wrapper referred to as a Decorator around the actual object.
  
 Examples:
  

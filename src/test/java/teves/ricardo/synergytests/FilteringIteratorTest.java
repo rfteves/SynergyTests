@@ -61,6 +61,34 @@ public class FilteringIteratorTest {
         assertEquals(expResult, result);
     }
     
+    @Test
+    public void testHasNext3() {
+        System.out.println("hasNext3");
+        FilteringIterator another = mock(FilteringIterator.class);
+        when(another.hasNext()).thenReturn(Boolean.FALSE);
+        when(another.next()).thenReturn(null);
+        IObjectTest myTest = mock(IObjectTest.class);
+        when(myTest.test(another)).thenReturn(Boolean.FALSE);
+        FilteringIterator instance = new FilteringIterator(another, myTest);
+        boolean expResult = false;
+        boolean result = instance.hasNext();
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testHasNext4() {
+        System.out.println("hasNext4");
+        FilteringIterator another = mock(FilteringIterator.class);
+        when(another.hasNext()).thenReturn(Boolean.TRUE);
+        when(another.next()).thenReturn(another);
+        IObjectTest myTest = mock(IObjectTest.class);
+        when(myTest.test(another)).thenReturn(Boolean.TRUE);
+        FilteringIterator instance = new FilteringIterator(another, myTest);
+        boolean expResult = true;
+        boolean result = instance.hasNext();
+        assertEquals(expResult, result);
+    }
+    
 
     /**
      * Test of next method, of class FilteringIterator.
@@ -84,6 +112,41 @@ public class FilteringIteratorTest {
         System.out.println("next2");
         FilteringIterator instance = mock(FilteringIterator.class);
         Object expResult = null;
+        Object result = instance.next();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of next method, of class FilteringIterator.
+     */
+    @Test
+    public void testNext3() {
+        System.out.println("next3");
+        FilteringIterator another = mock(FilteringIterator.class);
+        when(another.hasNext()).thenReturn(Boolean.FALSE);
+        when(another.next()).thenReturn(null);
+        IObjectTest myTest = mock(IObjectTest.class);
+        when(myTest.test(another)).thenReturn(Boolean.FALSE);
+        FilteringIterator instance = new FilteringIterator(another, myTest);
+        Object expResult = null;
+        Object result = instance.next();
+        assertEquals(expResult, result);
+    }
+    
+
+    /**
+     * Test of next method, of class FilteringIterator.
+     */
+    @Test
+    public void testNext4() {
+        System.out.println("next4");
+        FilteringIterator another = mock(FilteringIterator.class);
+        when(another.hasNext()).thenReturn(Boolean.TRUE);
+        when(another.next()).thenReturn(another);
+        IObjectTest myTest = mock(IObjectTest.class);
+        when(myTest.test(another)).thenReturn(Boolean.TRUE);
+        FilteringIterator instance = new FilteringIterator(another, myTest);
+        Object expResult = another;
         Object result = instance.next();
         assertEquals(expResult, result);
     }

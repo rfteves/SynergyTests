@@ -22,12 +22,21 @@ public class FilteringIterator implements Iterator {
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        System.out.println("myTest.test(iterator):" + myTest.test(iterator));
+        if (myTest.test(iterator)) {
+            return iterator.hasNext();
+        } else {
+            return false;
+        }
     }
 
     @Override
     public Object next() {
-        return iterator.next();
+        if (hasNext()) {
+            return iterator.next();
+        } else {
+            return null;
+        }
     }
     
 }
